@@ -10,9 +10,37 @@
 
 \usepackage[utf8]{vietnam}
 
+\usepackage{amsthm}
+% \usepackage{ntheorem}
+\newtheoremstyle{theoremst}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {.}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+\newtheoremstyle{examplest}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {\\}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+  
+\theoremstyle{theoremst}
+\newtheorem{definition}{Định nghĩa}[section]
+\newtheorem{theorem}{Định lý}[section]
+
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+
 
 \title{MAGNN: Metapath Aggregated Graph Neural Network for
 Heterogeneous Graph Embedding\\
@@ -68,8 +96,14 @@ Graph Neural Network} (MAGNN) để tăng tốc hiệu năng cuối cùng. Đặ
 % component, formatting, style, styling, insert
 % \end{IEEEkeywords}
 
-\section{Introduction}
+\section{Giới thiệu}
 \input{sections/introduction.tex}
+
+\section{Sơ lược}
+\input{sections/preliminary.tex}
+
+\section{Nghiên cứu liên quan}
+\input{sections/related_work.tex}
 
 \section{Ease of Use}
 
