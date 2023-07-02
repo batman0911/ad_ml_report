@@ -1,0 +1,93 @@
+Bảng 2: Thống kê mô tả các tập dữ liệu
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tập dữ liệu & Nút & Cạnh & Metapath \\
+\hline
+$\mathrm{IMDb}$ & $\begin{array}{l}\text { \# phim (M): } 4,278 \\ \text { \# đạo diễn (D): } 2,081 \\ \text { \# diễn viên (A): 5,257 }\end{array}$ & $\begin{array}{l}\text { \# M-D: } 4,278 \\ \text { \# M-A: } 12,828\end{array}$ & $\begin{array}{c}\text { MDM } \\ \text { MAM } \\ \text { DMD } \\ \text { DMAMD } \\ \text { AMA } \\ \text { AMDMA }\end{array}$ \\
+\hline
+DBLP & $\begin{array}{l}\text { \# tác giả }(\mathrm{A}): 4,057 \\ \text { \# bài báo }(\mathrm{P}): 14,328 \\ \text { \# thuật ngữ }(\mathrm{T}): 7,723 \\ \text { \# nơi xuất bản }(\mathrm{V}): 20\end{array}$ & $\begin{array}{l}\# \text { A-P: } 19,645 \\ \# \text { P-T: } 85,810 \\ \# \text { P-V: } 14,328\end{array}$ & $\begin{array}{c}\mathrm{APA} \\ \mathrm{APTPA} \\ \mathrm{APVPA}\end{array}$ \\
+\hline
+Last.fm & $\begin{array}{l}\text { \# người dùng (U): 1,892 } \\ \text { \# nghệ sĩ (A): 17,632 } \\ \text { \# thẻ nghệ sĩ (T): 1,088 }\end{array}$ & $\begin{array}{l}\text { \# U-U: } 12,717 \\ \text { \# U-A: 92,834 } \\ \text { \# A-T: 23,253 }\end{array}$ & $\begin{array}{c}\text { UU } \\ \text { UAU } \\ \text { UATAU } \\ \text { AUA } \\ \text { AUUA } \\ \text { ATA }\end{array}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+Bảng 3: Kết quả thực nghiệm (%) trên tập dữ liệu IMDb và DBLP đối với tác vụ phân loại nút. 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Tập dữ liệu} & \multirow{2}{*}{Độ đo} & \multirow{2}{*}{Train \%} & \multicolumn{5}{|c|}{Không giám sát} & \multicolumn{4}{|c|}{Bán giám sát} \\
+\hline
+ &  &  & LINE & node2vec & ESim & metapath2vec & HERec & GCN & GAT & HAN & MAGNN \\
+\hline
+\multirow{8}{*}{IMDb} & \multirow{4}{*}{Macro-F1} & $20 \%$ & 44.04 & 49.00 & 48.37 & 46.05 & 45.61 & 52.73 & 53.64 & 56.19 & 59.35 \\
+\hline
+ &  & $40 \%$ & 45.45 & 50.63 & 50.09 & 47.57 & 46.80 & 53.67 & 55.50 & 56.15 & 60.27 \\
+\hline
+ &  & $60 \%$ & 47.09 & 51.65 & 51.45 & 48.17 & 46.84 & 54.24 & 56.46 & 57.29 & 60.66 \\
+\hline
+ &  & $80 \%$ & 47.49 & 51.49 & 51.37 & 49.99 & 47.73 & 54.77 & 57.43 & 58.51 & 61.44 \\
+\hline
+ & \multirow{4}{*}{Micro-F1} & $20 \%$ & 45.21 & 49.94 & 49.32 & 47.22 & 46.23 & 52.80 & 53.64 & 56.32 & 59.60 \\
+\hline
+ &  & $40 \%$ & 46.92 & 51.77 & 51.21 & 48.17 & 47.89 & 53.76 & 55.56 & 57.32 & 60.50 \\
+\hline
+ &  & $60 \%$ & 48.35 & 52.79 & 52.53 & 49.87 & 48.19 & 54.23 & 56.47 & 58.42 & 60.88 \\
+\hline
+ &  & $80 \%$ & 48.98 & 52.72 & 52.54 & 50.50 & 49.11 & 54.63 & 57.40 & 59.24 & 61.53 \\
+\hline
+\multirow{8}{*}{DBLP} & \multirow{4}{*}{Macro-F1} & $20 \%$ & 87.16 & 86.70 & 90.68 & 88.47 & 90.82 & 88.00 & 91.05 & 91.69 & 93.13 \\
+\hline
+ &  & $40 \%$ & 88.85 & 88.07 & 91.61 & 89.91 & 91.44 & 89.00 & 91.24 & 91.96 & 93.23 \\
+\hline
+ &  & $60 \%$ & 88.93 & 88.69 & 91.84 & 90.50 & 92.08 & 89.43 & 91.42 & 92.14 & 93.57 \\
+\hline
+ &  & $80 \%$ & 89.51 & 88.93 & 92.27 & 90.86 & 92.25 & 89.98 & 91.73 & 92.50 & 94.10 \\
+\hline
+ & \multirow{4}{*}{Micro-F1} & $20 \%$ & 87.68 & 87.21 & 91.21 & 89.02 & 91.49 & 88.51 & 91.61 & 92.33 & 93.61 \\
+\hline
+ &  & $40 \%$ & 89.25 & 88.51 & 92.05 & 90.36 & 92.05 & 89.22 & 91.77 & 92.57 & 93.68 \\
+\hline
+ &  & $60 \%$ & 89.34 & 89.09 & 92.28 & 90.94 & 92.66 & 89.57 & 91.97 & 92.72 & 93.99 \\
+\hline
+ &  & $80 \%$ & 89.96 & 89.37 & 92.68 & 91.31 & 92.78 & 90.33 & 92.24 & 93.23 & 94.47 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+Bảng 4: Kết quả thực nghiệm (\%) trên tập dữ liệu IMDb và DBLP đối với tác vụ phân cụm nút. 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Tập dữ liệu} & \multirow{2}{*}{Độ đo} & \multicolumn{4}{|c|}{Không giám sát} & \multicolumn{4}{c|}{Bán giám sát} &  \\
+\cline { 3 - 11 }
+ &  & LINE & node2vec & ESim & metapath2vec & HERec & GCN & GAT & HAN & MAGNN \\
+\hline
+\multirow{2}{*}{IMDb} & NMI & 1.13 & 5.22 & 1.07 & 0.89 & 0.39 & 7.46 & 7.84 & 10.79 & $\mathbf{1 5 . 5 8}$ \\
+\cline { 2 - 11 }
+ & ARI & 1.20 & 6.02 & 1.01 & 0.22 & 0.11 & 7.69 & 8.87 & 11.11 & $\mathbf{1 6 . 7 4}$ \\
+\hline
+\multirow{2}{*}{DBLP} & NMI & 71.02 & 77.01 & 68.33 & 74.18 & 69.03 & 73.45 & 70.73 & 77.49 & $\mathbf{8 0 . 8 1}$ \\
+\cline { 2 - 11 }
+ & ARI & 76.52 & 81.37 & 72.22 & 78.11 & 72.45 & 77.50 & 76.04 & 82.95 & $\mathbf{8 5 . 5 4}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+Bảng 5: Kết quả thực nghiệm (\%) trên tập dữ liệu Last.fm đối với tác vụ dữ đoán liên kết.
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Dataset & Metrics & LINE & node2vec & ESim & metapath2vec & HERec & GCN & GAT & GATNE & HAN & MAGNN \\
+\hline
+\multirow{2}{*}{Last.fm} & AUC & 85.76 & 67.14 & 82.00 & 92.20 & 91.52 & 90.97 & 92.36 & 89.21 & 93.40 & $\mathbf{9 8 . 9 1}$ \\
+\cline { 2 - 11 }
+ & AP & 88.07 & 64.11 & 82.19 & 90.11 & 89.47 & 91.65 & 91.55 & 88.86 & 92.44 & $\mathbf{9 8 . 9 3}$ \\
+\hline
+\end{tabular}
+\end{center}
