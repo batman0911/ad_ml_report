@@ -37,7 +37,7 @@ trong đó $\left[ \alpha ^P_{\nu u} \right]_k$ là trọng số chuẩn hóa c�
 Tóm lại, với các vector đặc trưng $\mathbf{h'}_{u} \in \mathbb{R}^{d'} \forall u \in \pmb{\mathcal{V}}$ và tập các metapaths $\pmb{\mathcal{P}}_A = {P_1, P_2, ..., P_M}$ bắt đầu hoặc kết thúc với loại nút $A \in \pmb{\mathcal{A}}$, tổng hợp của MAGNN sinh $M$ biểu diễn metapath-specific vector của nút đích $\nu \in \pmb{\mathcal{V}}_A$, kí hiệu là $\{ \mathbf{h}^{P_1}_{\nu}, \mathbf{h}^{P_2}_{\nu}, ... , \mathbf{h}^{P_M}_{\nu} \}$. Mỗi $\mathbf{h}^{P_1}_{\nu} \in \mathbb{R}^{d'}$ (giả sử $K=1$) có thể hiểu là tổng hợp của các cấu hình $P_i-\text{metapath}$ của nút $\nu$, thể hiện một khía cạnh của thông tin chứ chong nút $\nu$.
 
 \subsection{Tổng hợp inter-metapath}
-SAu khi tổng hợp dữ liệu nút và cạnh với mỗi metapath, chúng ta cần kết hợp thông tin của tất cả các metapath sử dụng một lớp tổng hợp inter-metapath. Bây giờ với một loại nút $A$, ta có $|\pmb{\mathcal{V}}_A|$ tập các latent vectors: $\{ \mathbf{h}^{P_1}_{\nu}, \mathbf{h}^{P_2}_{\nu}, ... , \mathbf{h}^{P_M}_{\nu} \}$ với $\nu \in \pmb{\mathcal{V}}_A$, với $M$ là số metapaths cho loại $A$. Một các tiếp cận tổng hợp inter-metapath trực tiếp là lấy trung bình element-wise của các vectors nút này. Ta mở rộng cách tiếp cận này bằng cách khai thác cơ chế chú ý để gán các trọng số khác nhau cho các metapaths khác nhau. Phép toán này là có lý vì các metapaths có đóng góp không giống nhau trong một đồ thị không đồng nhất.
+Sau khi tổng hợp dữ liệu nút và cạnh với mỗi metapath, chúng ta cần kết hợp thông tin của tất cả các metapath sử dụng một lớp tổng hợp inter-metapath. Bây giờ với một loại nút $A$, ta có $|\pmb{\mathcal{V}}_A|$ tập các latent vectors: $\{ \mathbf{h}^{P_1}_{\nu}, \mathbf{h}^{P_2}_{\nu}, ... , \mathbf{h}^{P_M}_{\nu} \}$ với $\nu \in \pmb{\mathcal{V}}_A$, với $M$ là số metapaths cho loại $A$. Một các tiếp cận tổng hợp inter-metapath trực tiếp là lấy trung bình element-wise của các vectors nút này. Ta mở rộng cách tiếp cận này bằng cách khai thác cơ chế chú ý để gán các trọng số khác nhau cho các metapaths khác nhau. Phép toán này là có lý vì các metapaths có đóng góp không giống nhau trong một đồ thị không đồng nhất.
 
 Đầu tiên, ta cộng mỗi metapath $P_i \in \pmb{\mathcal{P}}_A$ bằng trung bình các vectors nút metapath-specific đã được biến đổi cho tất cả các nút $\nu \in \pmb{\mathcal{V}}_A$,
 \begin{equation}
@@ -60,3 +60,47 @@ Cuối cùng, MAGNN sử dụng một biến đổi tuyến tính bổ sung vớ
   \mathbf{h}_{\nu} = \sigma \left( \mathbf{W}_0 \cdot \mathbf{h}^{\pmb{\mathcal{P}}_A}_{\nu} \right)
 \end{equation}
 trong đó, $\sigma (\cdot)$ là một hàm kích hoạt và $\mathbf{W}_0 \in \mathbb{R}^{d_0 \times d'}$ là một ma trận trọng số. Phép chiếu này là một tác vụ cụ thể. Nó có thể hiểu là một phân loại tuyến tính cho phân loại nút hoặc được coi là hình chiếu vào không gian với các độ đo sự tương tự của nút cho dự đoán liên kết. 
+
+\subsection{Biểu diễn (mã hóa) cấu hình metapath}
+Để mã hóa cấu hình metapath trong phần 4.2, ta xem xét ba hàm mã hóa khả dĩ sau: 
+
+\begin{itemize}
+  \item Mã hóa trung bình. Hàm này tính toán trung bình theo từng thành phần (element-wise) của nút dọc theo cấu hình metapath $P(v, u)$ :
+\end{itemize}
+\begin{equation}
+  \mathbf{h}_{P(v, u)}=\operatorname{MEAN}\left(\left\{\mathbf{h}_{t}^{\prime}, \forall t \in P(v, u)\right\}\right).
+\end{equation}
+
+\begin{itemize}
+  \item Mã hóa tuyến tính. Hàm này là một phiên bản mở rộng của mã hóa trung bình, trong đó việc mã hóa được thực hiện dựa trên các biến đổi tuyến tính:
+\end{itemize}
+\begin{equation}
+    \mathbf{h}_{P(v, u)}=\mathbf{W}_{P} \cdot \operatorname{MEAN}\left(\left\{\mathbf{h}_{t}^{\prime}, \forall t \in P(v, u)\right\}\right).
+\end{equation}
+
+\begin{itemize}
+  \item Mã hóa dựa trên phép quay có quan hệ. Ta xem xét mã hóa một cấu hình metapath dựa trên phép quay có quan hệ trong không gian phức, một phương pháp được đề xuất bởi RotatE [24] để biểu diễn đồ thị tri thức. Hàm mã hóa trung bình và tuyến tính được giới thiệu ở trên coi các cấu hình metapath như một tập hợp, và vì thế chúng bỏ qua thông tin được biểu diễn trong kiến trúc chuỗi của metapath. Trong khi đó, phép quay có quan hệ lại cho phép ta mô hình hóa kiểu tri thức đó. Biết $P(v, u)=\left(t_{0}, t_{1}, \ldots, t_{n}\right)$ with $t_{0}=u$ và $t_{n}=v$, let $R_{i}$ là mối quan hệ giữa nút  $t_{i-1}$ và nút $t_{i}$, gọi $\mathbf{r}_{i}$ là vector mối quan hệ của $R_{i}$, khi đó mã hóa dựa trên phép quay có quan hệ được thể hiện bởi công thức.
+\end{itemize}
+\begin{equation}
+    \begin{aligned}
+    & \mathbf{o}_{0}=\mathbf{h}_{t_{0}}^{\prime}=\mathbf{h}_{u}^{\prime}, \\
+    & \mathbf{o}_{i}=\mathbf{h}_{t_{i}}^{\prime}+\mathbf{o}_{i-1} \odot \mathbf{r}_{i}, \\
+    & \mathbf{h}_{P(v, u)}=\frac{\mathbf{o}_{n}}{n+1},
+    \end{aligned}
+\end{equation}
+trong đó  $\mathbf{h}_{t_{i}}^{\prime}$ và $\mathbf{r}_{i}$ đều là các vector phức, $\odot$ là tích vô hướng. Ta có thể dễ giàng phân tích một vector thực có số chiều là $d^{\prime}$ thành một vector phức có số chiều là $d^{\prime} / 2$ bằng cách coi nửa đầu tiên của vector là phần thực và nửa sau là phần ảo.
+
+\subsection{Huấn luyện mô hình}
+Sau khi thực hiện các biến đổi thành phần đã giới thiệu ở các phần trước, ta sẽ thu được biểu diễn cuối cùng của các nút để phục vụ cho các bài toán khác tiếp theo. Tùy theo đặc điểm khác nhau của các bài toán và việc nhãn của các nút có sẵn hay không mà chúng ta có thể huấn luyện mô hình MAGNN theo 2 mô hình (paradigm) chính là học bán giám sát (semi-supervised learning) và học không giám sát (unsupervised learning).
+
+Đối với trường hợp học bán giám sát, với thông tin có được từ một phần nhỏ các nút được gán nhãn, ta có thể học các tham số của mô hình để tối thiểu hóa hàm cross-entropy bằng phương pháp lan truyền ngược (backpropagation) hoặc gradient descent. Và từ đó học được cách biểu diễn nút cho đồ thị không đồng nhất sao cho bảo toàn được nhiều thông tin quan trọng nhất có thể. Hàm tổn thất cross-entropy cho trường hợp học bán giám sát được cho bởi công thức sau:
+\begin{equation}
+    \mathcal{L}=-\sum_{v \in \mathcal{V}_{L}} \sum_{c=1}^{C} \mathbf{y}_{v}[c] \cdot \log \mathbf{h}_{v}[c]
+\end{equation}
+trong đó $V_{L}$ là tập hợp các nút có nhãn, $C$ là số lượng phân lớp, $\mathbf{y}_{v}$ là vector one-hot thể hiện nhãn của nút $v$, và $\mathbf{h}_{v}$ là vector xác suất dự báo của nút $v$.
+
+Đối với trường hợp học không giám sát thì ta không có bất kì nhãn của nút nào cả, khi đó ta có thể học các tham số của mô hình bằng cách tối thiểu hóa hàm tổn thất sau đây [20]:
+\begin{equation}
+    \mathcal{L}=-\sum_{(u, v) \in \Omega} \log \sigma\left(\mathbf{h}_{u}^{\top} \cdot \mathbf{h}_{v}\right)-\sum_{\left(u^{\prime}, v^{\prime}\right) \in \Omega^{-}} \log \sigma\left(-\mathbf{h}_{u^{\prime}}^{\top} \cdot \mathbf{h}_{v^{\prime}}\right),
+\end{equation}
+trong đó $\sigma(\cdot)$ là hàm sigmoid, $\Omega$ là tập hợp các cặp nút quan sát được (dương tính), $\Omega^{-}$ là tập hợp các cặp nút âm tính được lấy mẫu từ tất cả các cặp nút không quan sát được (phần bù của $\Omega$).
