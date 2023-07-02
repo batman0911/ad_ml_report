@@ -18,3 +18,32 @@ Tóm lại, bài báo này có một số đóng góp chính:
   \item[] (2) Thiết kế một số hàm mã hóa tiềm năng để trích xuất thông tin từ các cấu hình metapaths, bao gồm trường hợp dựa trên ý tưởng phép xoay quan hệ trong không gian phức [24].
   \item[] (3) Tác giả tiến hành nhiều thí nghiệm trên các tập dữ liệu IMDb và DBLP để phân loại và phân cụm nút cũng như dùng tập Last.fm để đánh giá dự đoán liên kết và hiệu suất của mô hình. Thí nghiệm trên tất cả các tập dữ liệu này và các bài toán chỉ ra rằng nhúng nút được học bởi MAGNN luôn tốt hơn các mô hình tiên tiến nhất hiện tại (SOTA).
 \end{itemize}
+
+\begin{table}[]
+  \label{tb:01}
+  \caption[]{Kí hiệu được dùng trong báo cáo}
+  \begin{tabular}{ll}
+  \hline
+  \multicolumn{1}{|l|}{Kí hiệu} & \multicolumn{1}{l|}{Định nghĩa} \\ \hline
+  \multicolumn{1}{|l|}{$\mathbb{R}^n$} & \multicolumn{1}{l|}{Không gian vector Euclid $n$ chiều} \\ \hline
+  \multicolumn{1}{|l|}{$a, \mathbf{a}, \mathbf{A}$} & \multicolumn{1}{l|}{Số, vector, ma trận}   \\ \hline
+  \multicolumn{1}{|l|}{$\mathbf{A}^T$} & \multicolumn{1}{l|}{Ma trận/vector chuyển vị}   \\ \hline
+  \multicolumn{1}{|l|}{$\pmb{\mathcal{V}}$} & \multicolumn{1}{l|}{Tập đỉnh của đồ thị}   \\ \hline
+  \multicolumn{1}{|l|}{$\pmb{\mathcal{E}}$} & \multicolumn{1}{l|}{Tập cạnh của đồ thị}   \\ \hline
+  \multicolumn{1}{|l|}{$\pmb{\mathcal{G}}$} & \multicolumn{1}{l|}{Đồ thị $\pmb{\mathcal{G} = (\pmb{\mathcal{V}}, \pmb{\mathcal{E}})}$}   \\ \hline
+  \multicolumn{1}{|l|}{$\nu$} & \multicolumn{1}{l|}{Một nút $\nu \in \pmb{\mathcal{V}}$}   \\ \hline
+  \multicolumn{1}{|l|}{$P$} & \multicolumn{1}{l|}{Một metapath}   \\ \hline
+  \multicolumn{1}{|l|}{$P{\nu, u}$} & \multicolumn{1}{l|}{Một cấu hình metapath kết nối nút $\nu$ và nút $u$}   \\ \hline
+  \multicolumn{1}{|l|}{$\pmb{\mathcal{N}}_{\nu}$} & \multicolumn{1}{l|}{Tập lân cận của nút $\nu$}   \\ \hline
+  \multicolumn{1}{|l|}{$\pmb{\mathcal{N}}^P_{\nu}$} & \multicolumn{1}{l|}{Tập lân cận dựa trên metapath $P$ của nút $\nu$}   \\ \hline
+  \multicolumn{1}{|l|}{$x_{\nu}$} & \multicolumn{1}{l|}{Đặc trưng (nội dung) thô của nút $\nu$}   \\ \hline
+  \multicolumn{1}{|l|}{$h_{\nu}$} & \multicolumn{1}{l|}{Trạng thái ẩn (nhúng) của nút $\nu$}   \\ \hline
+  \multicolumn{1}{|l|}{$\mathbf{W}$} & \multicolumn{1}{l|}{Ma trận trọng số}   \\ \hline
+  \multicolumn{1}{|l|}{$\alpha, \beta$} & \multicolumn{1}{l|}{Trọng số chú ý chuẩn hóa}   \\ \hline
+  \multicolumn{1}{|l|}{$\sigma (\cdot)$} & \multicolumn{1}{l|}{Hàm kích hoạt}   \\ \hline
+  \multicolumn{1}{|l|}{$\bigodot$} & \multicolumn{1}{l|}{Phép nhân phần tử}   \\ \hline
+  \multicolumn{1}{|l|}{$|\cdot|$} & \multicolumn{1}{l|}{Lực lượng của tập hợp}   \\ \hline
+  \multicolumn{1}{|l|}{$\parallel$} & \multicolumn{1}{l|}{Nối vector}   \\ \hline
+                                &                                
+  \end{tabular}
+  \end{table}
