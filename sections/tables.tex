@@ -91,3 +91,26 @@ Dataset & Metrics & LINE & node2vec & ESim & metapath2vec & HERec & GCN & GAT & 
 \hline
 \end{tabular}
 \end{center}
+
+Bảng 6: Kết quả phân tích ảnh hưởng của từng thành phần
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Variant} & \multicolumn{4}{|c|}{IMDb} & \multicolumn{4}{c|}{DBLP} & \multicolumn{2}{c|}{Last.fm} \\
+\cline { 2 - 11 }
+ & Macro-F1 & Micro-F1 & NMI & ARI & Macro-F1 & Micro-F1 & NMI & ARI & AUC & AP \\
+\hline
+MAGNN $_{\text {feat }}$ & 48.87 & 50.36 & 5.82 & 5.30 & 92.80 & 93.32 & 77.17 & 82.15 & N/A & N/A \\
+\hline
+MAGNN $_{\text {nb }}$ & 58.45 & 58.84 & 12.87 & 11.98 & 92.61 & 93.15 & 77.64 & 82.60 & 93.68 & 92.95 \\
+\hline
+MAGNN $_{\text {sm }}$ & 56.77 & 56.64 & 11.90 & 11.84 & 93.19 & 93.69 & 79.48 & 84.39 & 92.54 & 91.52 \\
+\hline
+MAGNN $_{\text {avg }}$ & 59.66 & 59.78 & 13.64 & 15.27 & 93.13 & 93.44 & 79.31 & 84.30 & 98.63 & 98.57 \\
+\hline
+MAGNN $_{\text {linear }}$ & 57.80 & 57.96 & 9.80 & 8.49 & 93.21 & 93.52 & 78.95 & 83.89 & 98.56 & 98.48 \\
+\hline
+MAGNN $_{\text {rot }}$ & $\mathbf{6 0 . 4 3}$ & $\mathbf{6 0 . 6 3}$ & $\mathbf{1 5 . 5 8}$ & $\mathbf{1 6 . 7 4}$ & $\mathbf{9 3 . 5 1}$ & $\mathbf{9 3 . 9 4}$ & $\mathbf{8 0 . 8 1}$ & $\mathbf{8 5 . 5 4}$ & $\mathbf{9 8 . 9 1}$ & $\mathbf{9 8 . 9 3}$ \\
+\hline
+\end{tabular}
+\end{center}
