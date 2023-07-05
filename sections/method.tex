@@ -5,6 +5,7 @@ Với một đồ thị không đồng nhất liên kết với các thuộc tí
 
 Vì vậy trước khi đưa các vectors nút vào MAGNN, tác giả áp dụng phép biến đổi tuyến tính cho từng loại nút bằng cách chiếu các vector đặc trưng vào cùng một không gian latent. Với một nút $\nu \in \pmb{\mathcal{V}}_A$ của loại $A \in \pmb{\mathcal{A}}$, ta có
 \begin{equation}
+  \label{eq:01}
   \mathbf{h'}_{\nu} = \mathbf{W}_A \cdot \mathbf{x}^A_{\nu}
 \end{equation}
 trong đó $\mathbf{x}_{\nu} \in \mathbb{R}^{d_A}$ là vector đặc trưng gốc và $\mathbf{h'}_{\nu} \in \mathbb{R}^{d'}$ là vector lantent hình chiếu  của nút $\nu$. $\mathbf{W}_A \in \mathbb{R}^{d' \times d_A}$ là ma trận trọng số của các nút loại $A$.
@@ -20,15 +21,17 @@ Biến đổi nội dung nút giải quyết tính không đồng nhất của m
 \subsection{Tổng hợp intra-metapath}
 Cho một metapath $P$, lớp tổng hợp intra-metapath học thông tin cấu trúc và ngữ nghĩa được nhúng trong nút mục tiêu, các lân cận dựa trên metapath và ngữ cảnh ở giữa bằng cách mã hóa cấu hình metapath của $P$. Gọi $P(\nu, u)$ là một cấu hình metapath kết nối nút mục tiêu $\nu$ và lân cận dựa trên metapath $u \in \pmb{\mathcal{N}}^P_{\nu}$, tác giả định nghĩa thêm  nút trung gian của $P(\nu, u)$ như sau $\{ m^{P(\nu, u)} \} = P(\nu, u) \backslash \{ \nu, u \}$. Tổng hợp intra-metapath sử dụng một bộ mã hóa cấu hình metapath để biến đổi tất cả các đặc trưng nút dọc theo một cấu hình metapath thành một vector duy nhất,
 \begin{equation}
+  \label{eq:02}
   \mathbf{h}_{P(\nu, u)} = f_{\theta} (P(\nu, u)) = f_{\theta} \left( \mathbf{h'}_{\nu}, \mathbf{h'}_{u}, \{ \mathbf{h'}_{t}, \forall t \in \{m^{P(\nu, u)}\} \} \right)
 \end{equation}
 trong đó, $\mathbf{h}_{P(\nu, u)} \in \mathbb{R}^{d'}$ có số chiều là $d'$. Để đơn giản, ta dùng $P(\nu, u)$ để biểu diễn một cấu hình đơn, mặc dù có thể có nhiều cấu hình kết nối 2 nút. Phần sau sẽ giới thiệu một vài lựa chọn của bộ mã hóa cấu hình metapath tốt.
 
 Sau khi mã hóa các cấu hình metapath thành biểu diễn vector, tác giả áp dụng một lớp chú ý đồ thị [28] để  tính tổng trọng số các cấu hình metapath của $P$ liên quan đến nút đích $\nu$. Ý tưởng chính là các cấu hình metapath khác nhau sẽ đóng góp vào biểu diễn nút mục tiêu với mức độ khác nhau. Chúng ta có thể mô hình hóa điều này bằng cách học một trọng số chuẩn hóa quan trọng $\alpha^P_{\nu u}$ cho mỗi cấu hình metapath và sau đó tính tổng trọng số của tất cả các cấu hình:
 \begin{equation}
+  \label{eq:03}
   \begin{split}
     e^P_{\nu u} &= \text{LeakyReLU} (a^T_P \cdot [\mathbf{h'}_{\nu}\parallel \mathbf{h}_{P(\nu, u)}]), \\
-  \alpha ^P_{\nu u} &= \frac{\text{exp}{e^P_{\nu u}}}{\sum _{s \in \pmb{\mathcal{N}}^P_{\nu}} \text{exp} (e^P_{\nu u})}, \\
+  \alpha ^P_{\nu u} &= \frac{\text{exp}{(e^P_{\nu u})}}{\sum _{s \in \pmb{\mathcal{N}}^P_{\nu}} \text{exp} (e^P_{\nu u})}, \\
   \mathbf{h}^P_{\nu} &= \sigma \left( \sum_{u \in \pmb{\mathcal{N}}^P_{\nu}} \alpha ^P_{\nu u} \cdot \mathbf{h}_{P(\nu, u)} \right).
   \end{split}
 \end{equation}
