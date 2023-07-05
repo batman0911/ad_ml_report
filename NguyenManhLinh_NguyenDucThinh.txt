@@ -1,0 +1,3 @@
+- source code: https://github.com/batman0911/MAGNN/tree/linhnm (xin lưu ý, checkout nhánh linhnm)
+- report: https://github.com/batman0911/ad_ml_report/blob/master/main.pdf
+- slide: https://1drv.ms/f/s!AhvVyQ1gW2O9gbUNxMhhRjG5K2_RvA?e=AJPlzl
