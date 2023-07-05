@@ -90,7 +90,7 @@ Heterogeneous Graph Embedding\\
 \maketitle
 
 \begin{abstract}
-Một lượng lớn các đồ thị hay mạng trong thực tế vốn dĩ không đồng nhất, có nhiều loại nút và nhiều loại quan hệ. Embedding đồ thị không đồng nhất là việc embed từ cấu trúc lớn và nhiều thông tin của đồ thị về biểu diễn nút trong không gian thấp chiều. Các mô hình đã tồn tại tường định nghĩa metapaths trong một đồ thị không đầu nhất để ghi lại các quan hệ và định hướng lựa chọn "hàng xóm". Tuy nhiên các mô hình này bỏ qua đặc trưng của từng nút mà tìm hiểu ngay lập tức các nút trên metapath hoặc chỉ xem xét một metapath. Để khắc phục ba giới hạn này, tác giả đề xuất một mô hình mới là \textit{Metapath Aggregated
+Một lượng lớn các đồ thị hay mạng trong thực tế vốn dĩ không đồng nhất, có nhiều loại nút và nhiều loại quan hệ. Biểu diễn đồ thị không đồng nhất là việc biểu diễn từ cấu trúc lớn và nhiều thông tin của đồ thị về biểu diễn nút trong không gian thấp chiều. Các mô hình đã tồn tại tường định nghĩa metapaths trong một đồ thị không đầu nhất để ghi lại các quan hệ và định hướng lựa chọn "hàng xóm". Tuy nhiên các mô hình này bỏ qua đặc trưng của từng nút mà tìm hiểu ngay lập tức các nút trên metapath hoặc chỉ xem xét một metapath. Để khắc phục ba giới hạn này, tác giả đề xuất một mô hình mới là \textit{Metapath Aggregated
 Graph Neural Network} (MAGNN) để tăng tốc hiệu năng cuối cùng. Đặc biệt, MAGNN sử dụng ba thành phần chính, biến đổi nội dung của nút thành các thuộc tính đóng gói của nút đầu vào, tổng hợp intra-metapath để kết hợp các nút ngữ nghĩa trung gian và tổng hợp inter-metapath để kết hợp thông tin từ nhiều metapaths. Các thí nghiệm được thực hiện trên ba bộ dữ liệu đồ thị không đồng nhất trong thực tế để phân loại nút, phân cụm nút và dự đoán liên kết chỉ ra rằng MAGNN đạt được kết quả dự đoán chính xác hơn so với các mô hình state-of-the-art hiện tại .
 \end{abstract}
 
@@ -117,16 +117,89 @@ Graph Neural Network} (MAGNN) để tăng tốc hiệu năng cuối cùng. Đặ
 \input{sections/conclusion.tex}
 
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+\bibitem{b1} JamesAtwoodandDonTowsley.2016. Diffusion-ConvolutionalNeuralNetworks. In NIPS. 1993–2001.
+
+\bibitem{b2} Peter Battaglia, Razvan Pascanu, Matthew Lai, Danilo Jimenez Rezende, and koray kavukcuoglu. 2016. Interaction Networks for Learning about Objects, Relations and Physics. In NIPS. 4502–4510.
+
+\bibitem{b3} AntoineBordes,NicolasUsunier,AlbertoGarcia-Duran,JasonWeston,andOk- sana Yakhnenko. 2013. Translating Embeddings for Modeling Multi-relational Data. In NIPS. 2787–2795.
+
+\bibitem{b4} Iván Cantador, Peter Brusilovsky, and Tsvi Kuflik. 2011. 2nd Workshop on Information Heterogeneity and Fusion in Recommender Systems (HetRec 2011). In RecSys.
+
+\bibitem{b5}YukuoCen,XuZou,JianweiZhang,HongxiaYang,JingrenZhou,andJieTang. 2019. Representation Learning for Attributed Multiplex Heterogeneous Network. In SIGKDD. 1358–1368.
+
+\bibitem{b6} HongxuChen,HongzhiYin,WeiqingWang,HaoWang,QuocVietHungNguyen, and Xue Li. 2018. PME: Projected Metric Embedding on Heterogeneous Networks for Link Prediction. In SIGKDD. 1177–1186.
+
+\bibitem{b7}KyunghyunCho,BartvanMerrienboer,ÇaglarGülçehre,FethiBougares,Holger Schwenk, and Yoshua Bengio. 2014. Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation. CoRR abs/1406.1078 (2014). arXiv:1406.1078
+
+\bibitem{b8}Michaël Defferrard, Xavier Bresson, and Pierre Vandergheynst. 2016. Convolu- tional Neural Networks on Graphs with Fast Localized Spectral Filtering. In NIPS. 3844–3852.
+
+\bibitem{b9}Yuxiao Dong, Nitesh V. Chawla, and Ananthram Swami. 2017. Metapath2Vec: Scalable Representation Learning for Heterogeneous Networks. In SIGKDD. 135– 144.
+
+\bibitem{b10} AlexFout,JonathonByrd,BasirShariat,andAsaBen-Hur.2017.ProteinInterface Prediction using Graph Convolutional Networks. In NIPS. 6530–6539.
+
+\bibitem{b11} Tao-yangFu,Wang-ChienLee,andZhenLei.2017.HIN2Vec:ExploreMeta-paths in Heterogeneous Information Networks for Representation Learning. In CIKM. 1797–1806.
+
+\bibitem{b12} Jing Gao, Feng Liang, Wei Fan, Yizhou Sun, and Jiawei Han. 2009. Graph-based Consensus Maximization Among Multiple Supervised and Unsupervised Models. In NIPS. 585–593.
+
+\bibitem{b13} Aditya Grover and Jure Leskovec. 2016. Node2Vec: Scalable Feature Learning for Networks. In SIGKDD. 855–864.
+
+\bibitem{b14} William L. Hamilton, Zhitao Ying, and Jure Leskovec. 2017. Inductive Represen- tation Learning on Large Graphs. In NIPS. 1024–1034.
+
+\bibitem{b15} Ming Ji, Yizhou Sun, Marina Danilevsky, Jiawei Han, and Jing Gao. 2010. Graph Regularized Transductive Classification on Heterogeneous Information Networks. In ECML PKDD. 570–586.
+
+\bibitem{b16} Thomas N. Kipf and Max Welling. 2017. Semi-Supervised Classification with Graph Convolutional Networks. In ICLR.
+
+\bibitem{b17} Yujia Li, Daniel Tarlow, Marc Brockschmidt, and Richard S. Zemel. 2016. Gated Graph Sequence Neural Networks. In ICLR.
+
+\bibitem{b18} Yaguang Li, Rose Yu, Cyrus Shahabi, and Yan Liu. 2018. Diffusion Convolutional Recurrent Neural Network: Data-Driven Traffic Forecasting. In ICLR.
+
+\bibitem{b19} Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013. Efficient Estimation of Word Representations in Vector Space. In ICLR.
+
+\bibitem{b20} TomasMikolov,IlyaSutskever,KaiChen,GregSCorrado,andJeffDean.2013. Distributed Representations of Words and Phrases and their Compositionality. In NIPS. 3111–3119.
+
+\bibitem{b21} Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. 2014. DeepWalk: Online Learn- ing of Social Representations. In SIGKDD. 701–710.
+
+\bibitem{b22} JingboShang,MengQu,JialuLiu,LanceM.Kaplan,JiaweiHan,andJianPeng. 2016. Meta-Path Guided Embedding for Similarity Search in Large-Scale Hetero- geneous Information Networks. CoRR abs/1610.09769 (2016). arXiv:1610.09769
+
+\bibitem{b23} Chuan Shi, Binbin Hu, Wayne Xin Zhao, and Philip S. Yu. 2019. Heterogeneous Information Network Embedding for Recommendation. IEEE Transactions on Knowledge and Data Engineering 31, 2 (2019), 357–370.
+
+\bibitem{b24} Zhiqing Sun, Zhi-Hong Deng, Jian-Yun Nie, and Jian Tang. 2019. RotatE: Knowl- edge Graph Embedding by Relational Rotation in Complex Space. In ICLR.
+
+\bibitem{b25} Jian Tang, Meng Qu, Mingzhe Wang, Ming Zhang, Jun Yan, and Qiaozhu Mei.
+2015. LINE: Large-scale Information Network Embedding. In WWW. 1067–1077.
+
+\bibitem{b26} Rianne van den Berg, Thomas N. Kipf, and Max Welling. 2017. Graph Convolu-
+tional Matrix Completion. CoRR abs/1706.02263 (2017). arXiv:1706.02263
+
+\bibitem{b27} Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017. Attention is All
+you Need. In NIPS. 5998–6008.
+
+\bibitem{b28} PetarVelickovic,GuillemCucurull,ArantxaCasanova,AdrianaRomero,Pietro
+Liò, and Yoshua Bengio. 2018. Graph Attention Networks. In ICLR.
+
+\bibitem{b29} Daixin Wang, Peng Cui, and Wenwu Zhu. 2016. Structural Deep Network Em-
+bedding. In SIGKDD. 1225–1234.
+
+\bibitem{b30} HongweiWang,MiaoZhao,XingXie,WenjieLi,andMinyiGuo.2019.Knowledge
+Graph Convolutional Networks for Recommender Systems. In WWW. 3307–3313.
+
+\bibitem{b31} Xiao Wang, Houye Ji, Chuan Shi, Bai Wang, Yanfang Ye, Peng Cui, and Philip S Yu. 2019. Heterogeneous Graph Attention Network. In WWW. 2022–2032.
+
+\bibitem{b32} ChengYang,ZhiyuanLiu,DeliZhao,MaosongSun,andEdwardY.Chang.2015.
+Network Representation Learning with Rich Text Information. In IJCAI. 2111–2117.
+
+\bibitem{b33} Jiaxuan You, Rex Ying, and Jure Leskovec. 2019. Position-aware Graph Neural
+Networks. In ICML. 7134–7143.
+
+\bibitem{b34} JianiZhang,XingjianShi,JunyuanXie,HaoMa,IrwinKing,andDit-YanYeung.
+2018. GaAN: Gated Attention Networks for Learning on Large and Spatiotemporal
+Graphs. In UAI. 339–349.
+
+\bibitem{b35} Jiani Zhang, Xingjian Shi, Shenglin Zhao, and Irwin King. 2019. STAR-GCN:
+Stacked and Reconstructed Graph Convolutional Networks for Recommender Systems. In IJCAI. 4264–4270.
+
+ 
 \end{thebibliography}
 \vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
 \end{document}
